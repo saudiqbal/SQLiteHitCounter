@@ -2,7 +2,7 @@
 // open the database
 $db = new PDO('sqlite:Counter.db');
 if (!headers_sent()) session_start();
-if (!$_SESSION['counter'])
+if (!(array_key_exists('counter', $_SESSION)))
 {
 	$_SESSION['counter'] = true;
     $db->exec("UPDATE Counter SET Counter = Counter + 1 WHERE Id = 1");
